@@ -1,6 +1,6 @@
 {% extends 'template.html' %}
 {% block content %}
-	<h2>Welcome! You are now Logged in.</h2>
+	<h2>Welcome! Hope you dont mind taking the quiz.</h2>
 	<br />
 	<br />
 	<a href="/logout">Logout</a>
@@ -8,7 +8,9 @@
 	<form action="" method = post>
 		{% for quest in quest %}
 		<p>{{ quest.question }}</p>
-		<ul><li>{{ quest.option_1 }}</li><li>{{ quest.option_2 }}</li></ul>
+		<div><input type="radio" name="answer-q-3" value="0" /> {{ quest.option_1 }} &nbsp; <input type="radio" name="answer-q-3" value="1" /> {{ quest.option_2 }}</div>
+		<!--
+		<ul><li>{{ quest.option_1 }}</li><li>{{ quest.option_2 }}</li></ul>-->
 		{% endfor %}
 		<!--
 		<dl>

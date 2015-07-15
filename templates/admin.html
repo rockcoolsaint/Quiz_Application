@@ -4,4 +4,15 @@
 	<br />
 	<br />
 	<a href="/logout">Logout</a>
+	<br />
+	<br />
+	<form method="POST" action="/admin">
+		<div class="col-md-6">
+			<span>Type question</span><p><input class="form-control" type="text" name="question" required/></p>
+			<span>Option 1</span><p><input class="form-control" type="text" name="option_1" required/></p>
+			<span>Option 2</span><p><input class="form-control" type="text" name="option_2" required/></p>
+			<span>Answer</span><p><input class="form-control" type="text" name="ans" required/></p>
+			<input type="submit" value="submit" />
+		</div>
+	</form>
 {% endblock %}

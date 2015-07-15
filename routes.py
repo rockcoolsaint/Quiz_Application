@@ -53,11 +53,33 @@ def quiz():
 	quest = db.session.query(Quiz).all()
 	return render_template('quiz.html', quest=quest)
 
-@app.route('/admin')
+@app.route('/admin', methods=['GET','POST'])
 @login_required
 def admin():
-	return render_template('admin.html')
+	#"""
+	if request.method == "POST":
+		question = request.form['question']
+		option_1 = request.form['option_1']
+		option_2 = request.form['option_2']
+		ans = request.form['ans']
+		if not question or not option_1 or not option_2 or not ans:
+			flash("All fields are required. Please try again.")
+			#return redirect(url_for('success'))
+			#return render_template('admin.html')
 
+		else:
+			quiz = Quiz(question, option_1, option_2, ans)
+			db.session.add(quiz)
+			#db.session.add(option_1)
+			#db.session.add(option_2)
+			#db.session.add(ans)
+			db.session.commit()
+			db.session.close()
+			flash('New entry was successfully posted!')
+			#return redirect(url_for('success'))
+			#"""
+	return render_template("admin.html")
+	
 @app.route('/log', methods= ['GET', 'POST'])
 def log():
 	error = None
