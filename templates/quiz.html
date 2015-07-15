@@ -1,0 +1,28 @@
+{% extends 'template.html' %}
+{% block content %}
+	<h2>Welcome! You are now Logged in.</h2>
+	<br />
+	<br />
+	<a href="/logout">Logout</a>
+
+	<form action="" method = post>
+		{% for quest in quest %}
+		<p>{{ quest.question }}</p>
+		<ul><li>{{ quest.option_1 }}</li><li>{{ quest.option_2 }}</li></ul>
+		{% endfor %}
+		<!--
+		<dl>
+			<dt>Username:
+				<dd><input type='text' name="username" value="{{request.form.username}}">
+			<dt>Password: 
+			<dd><input type='password' name='password'>
+		</dl>
+	-->
+		<p><input type='submit' value='submit'></p>
+	</form>
+	<!--
+	{% for quest in quest %}
+	<p>{{ quest.question }}</p>
+	<ul><li>{{ quest.option_1 }}</li><li>{{ quest.option_2 }}</li></ul>
+	{% endfor %}-->
+{% endblock %}

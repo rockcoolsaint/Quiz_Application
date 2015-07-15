@@ -5,7 +5,7 @@
 from flask import Flask, render_template, redirect, url_for, request, session, flash, g
 from flask.ext.sqlalchemy import SQLAlchemy
 from functools  import wraps
-# from models import *
+from models import *
 
 app = Flask(__name__)
 
@@ -47,10 +47,16 @@ def logout():
 	flash('You are loggedout')
 	return redirect (url_for('log'))
 
-@app.route('/hello')
+@app.route('/quiz')
 @login_required
-def hello():
-	return render_template('hello.html')
+def quiz():
+	quest = db.session.query(Quiz).all()
+	return render_template('quiz.html', quest=quest)
+
+@app.route('/admin')
+@login_required
+def admin():
+	return render_template('admin.html')
 
 @app.route('/log', methods= ['GET', 'POST'])
 def log():
@@ -60,7 +66,7 @@ def log():
 			error = 'Invalid Credentials. Please try again.'
 		else:
 			session['logged_in'] = True
-			return redirect(url_for('hello'))
+			return redirect(url_for('quiz'))
 	return render_template('log.html', error = error)
 
 #def connect_db():
