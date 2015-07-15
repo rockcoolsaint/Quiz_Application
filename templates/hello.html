@@ -1,0 +1,11 @@
+{% extends 'template.html' %}
+{% block content %}
+	<h2>Welcome! You are now Logged in.</h2>
+	<br />
+	<br />
+	<a href="/logout">Logout</a>
+
+	{% for item in quest %}
+	<p>{{ item }}</p>
+	{% endfor %}
+{% endblock %}
