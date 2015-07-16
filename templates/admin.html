@@ -15,4 +15,30 @@
 			<input type="submit" value="submit" />
 		</div>
 	</form>
+
+	<div>
+		<table class="table datatable">
+<thead>
+    <tr role=r"row">
+        <th>Question</th>
+        <th>Option 1</th>
+        <th>Option 2</th>
+        <th>Answer</th>
+        <th>Edit/Delete</th>
+           </tr>
+</thead>
+<tbody>	<!-- On rows -->
+{% for quest in quest %}
+<!-- On cells (`td` or `th`) -->
+  <tr>
+  <td class="">{{quest.question}}</td>
+  <td class="">{{quest.option_1}}</td>
+  <td class="">{{quest.option_2}}</td>
+  <td class="">{{quest.ans}}</td>
+  <td class=""> <a href="#">Delete</a>|<a href="#">Edit</a></td>
+  </tr>
+{% endfor %}
+</tbody>
+</table>
+	</div>
 {% endblock %}

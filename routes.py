@@ -78,7 +78,8 @@ def admin():
 			flash('New entry was successfully posted!')
 			#return redirect(url_for('success'))
 			#"""
-	return render_template("admin.html")
+	quest = db.session.query(Quiz).all()
+	return render_template("admin.html", quest=quest)
 	
 @app.route('/log', methods= ['GET', 'POST'])
 def log():
